@@ -6,10 +6,11 @@
 package br.castgroup.teste.service;
 
 import br.castgroup.teste.model.Pessoa;
-import br.castgroup.teste.repository.PessoaRepository;
+//import br.castgroup.teste.repository.PessoaRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,8 +22,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PessoaService {
 
-    @Autowired
-    PessoaRepository pessoaRepository;
+//    @Autowired
+//    PessoaRepository pessoaRepository;
+
+    List<Pessoa> pessoas = new ArrayList<Pessoa>();
+    int idPessoaCont = 0;
 
     /**
      * Método responsavel po acessar a classe repositorio e buscar pessoas
@@ -30,7 +34,7 @@ public class PessoaService {
      * @return lista de pessoas
      */
     public List<Pessoa> buscarPessoas() {
-        return pessoaRepository.findAll();
+        return pessoas; //pessoaRepository.findAll();
     }
 
     /**
@@ -40,7 +44,13 @@ public class PessoaService {
      * @return lista de pessoas
      */
     public Pessoa salvar(Pessoa pessoa) {
-        return pessoaRepository.save(pessoa);
+
+        pessoa.setId(idPessoaCont);
+
+        pessoas.add(pessoa);
+        idPessoaCont++;
+
+        return pessoa; //pessoaRepository.save(pessoa);
     }
 
     /**
@@ -49,7 +59,19 @@ public class PessoaService {
      * @param id
      */
     public void remove(Integer id) {
-        pessoaRepository.deleteById(id);
+        Pessoa pessoaRemover = new Pessoa();
+        for (Pessoa pessoa : pessoas) {
+
+            if (pessoa.getId() == id) {
+                pessoaRemover = pessoa;
+                break;
+
+            }
+        }
+
+        pessoas.remove(pessoaRemover);
+
+//        pessoaRepository.deleteById(id);
     }
 
     /**
@@ -59,8 +81,22 @@ public class PessoaService {
      * @param id
      * @return
      */
-    public Optional<Pessoa> buscarId(Integer id) {
-        return pessoaRepository.findById(id);
+    public Optional<Pessoa> buscarIdBase(Integer id) {
+
+        return null;//pessoaRepository.findById(id);
+    }
+
+    public Pessoa buscarId(Integer id) {
+
+        for (Pessoa pessoa : pessoas) {
+
+            if (pessoa.getId() == id) {
+                return pessoa;
+
+            }
+        }
+        return null;
+        //return pessoaRepository.findById(id);
     }
 
 }

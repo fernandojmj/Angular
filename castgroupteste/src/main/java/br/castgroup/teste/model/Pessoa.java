@@ -5,36 +5,36 @@
  */
 package br.castgroup.teste.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
 
 /**
  *
  * @author fernando.j.junior
  */
-@Entity(name = "TB_PESSOA")
+//@Entity(name = "TB_PESSOA")
 public class Pessoa {
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
     private int id;
     
-    @Column
+//    @Column
     private String name;
-    @Column
+//    @Column
     private String street;
-    @Column
+//    @Column
     private String number;
-    @Column
+//    @Column
     private String neighborhood;
-    @Column
+//    @Column
     private String city;
-    @Column
+//    @Column
     private String state;
-    @Column
+//    @Column
     private String cellphone;
-    @Column
+//    @Column
     private String phone;
     
     

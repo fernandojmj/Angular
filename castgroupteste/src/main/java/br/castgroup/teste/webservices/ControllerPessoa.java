@@ -71,9 +71,13 @@ public class ControllerPessoa {
      * @param id
      * @return pessoa
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/pessoa/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Optional<Pessoa>> buscarPessoaId(@PathVariable int id) {
-        return new ResponseEntity<Optional<Pessoa>>(service.buscarId(id), HttpStatus.OK);
+//    @RequestMapping(method = RequestMethod.GET, value = "/pessoa/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Optional<Pessoa>> buscarPessoaId(@PathVariable int id) {
+//        return new ResponseEntity<Optional<Pessoa>>(service.buscarId(id), HttpStatus.OK);
+//    }
+     @RequestMapping(method = RequestMethod.GET, value = "/pessoa/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Pessoa> buscarPessoaId(@PathVariable int id) {
+        return new ResponseEntity<Pessoa>(service.buscarId(id), HttpStatus.OK);
     }
 
 }

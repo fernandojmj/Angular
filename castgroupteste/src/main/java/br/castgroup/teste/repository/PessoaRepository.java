@@ -6,8 +6,7 @@
 package br.castgroup.teste.repository;
 
 import br.castgroup.teste.model.Pessoa;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+//import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
@@ -16,8 +15,8 @@ import org.springframework.stereotype.Repository;
  *  Classe Responsavel por fazer contato com a base de dados referente a entidade
  * pessoa.
  */
-@Repository
-public interface PessoaRepository extends JpaRepository<Pessoa,Integer>{
+//@Repository
+public interface PessoaRepository {//extends JpaRepository<Pessoa,Integer>{
     
     
 }
