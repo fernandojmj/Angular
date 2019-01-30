@@ -11,7 +11,7 @@
     <groupId>br.castgroup</groupId>
     <artifactId>teste</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <!--<packaging>war</packaging>-->
     <name>selecao</name>
     <description>selecao cast group</description>
 
