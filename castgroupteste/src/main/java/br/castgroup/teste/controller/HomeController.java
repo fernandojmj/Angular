@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.castgroup.teste.webservices.controller;
+package br.castgroup.teste.controller;
 
 import br.castgroup.teste.model.Pessoa;
 import java.util.List;
@@ -21,15 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
     
     
-    @RequestMapping("/home")
+    @RequestMapping(value = "/cadastroPessoa", method = RequestMethod.GET)
     public String index() {
-        
-        return "index";
-    }
-    
-    @RequestMapping("/cadastroPessoa")
-    public String cadastro() {
         
         return "cadastroPessoa";
     }
+    
+
 }

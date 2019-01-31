@@ -9,14 +9,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.castgroup</groupId>
-    <artifactId>teste</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>cast</artifactId>
     <!--<packaging>war</packaging>-->
     <name>selecao</name>
     <description>selecao cast group</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>br.castgroup.teste.TesteApplication</start-class> 
     </properties>
 
     <dependencies>
@@ -30,10 +30,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+<!--        <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>-->
+        
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
         
 <!--         <dependency>
@@ -45,7 +50,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <scope>provided</scope>
         </dependency>
         
         <dependency>
@@ -56,12 +60,13 @@
     </dependencies>
 
     <build>
-        <plugins>
+<!--        <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-        </plugins>
+        </plugins>-->
+        <finalName>service</finalName>
     </build>
 
 </project>

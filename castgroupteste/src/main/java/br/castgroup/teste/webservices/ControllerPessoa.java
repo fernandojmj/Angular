@@ -79,5 +79,6 @@ public class ControllerPessoa {
     public ResponseEntity<Pessoa> buscarPessoaId(@PathVariable int id) {
         return new ResponseEntity<Pessoa>(service.buscarId(id), HttpStatus.OK);
     }
-
+    
+     
 }

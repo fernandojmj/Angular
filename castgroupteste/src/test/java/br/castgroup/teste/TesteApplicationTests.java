@@ -28,6 +28,9 @@ public class TesteApplicationTests {
 	public void contextLoads() {
 	}
         
+        /**
+         * Teste do método  max diference 
+         */
         @Test
 	public void testeMaxDiference() {
             
@@ -39,6 +42,10 @@ public class TesteApplicationTests {
             
 	}
         
+        
+        /**
+         * Teste do método savar pessoa.
+         */
         @Test
         public void testeSavePessoa(){
             Pessoa p = new Pessoa();

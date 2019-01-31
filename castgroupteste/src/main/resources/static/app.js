@@ -4,22 +4,23 @@ var appSelecao = angular.module("appSelecao", []);
 appSelecao.controller("controllerPessoa", function ($scope, $http) {
 
     $scope.pessoas = [];
-   
+
     $scope.pessoa;
     $scope.mensagem = '';
     $scope.mensagemErro;
     $scope.pessoaDetalhe;
     $scope.exbibeMensagemSucesso = 'none';
     $scope.exbibeMensagemErro = 'none';
-    $scope.pessoaPesquisada="";
+    $scope.pessoaPesquisada = "";
+    $scope.host = '';
+    $scope.path = '';
+
+    $scope.pesquisarPessoa = function (nome) {
 
 
- $scope.pesquisarPessoa = function (nome) {
-
-
-       for (var i = 0; i < $scope.pessoas.length; i++) {
+        for (var i = 0; i < $scope.pessoas.length; i++) {
             var nomeLista = $scope.pessoas[i].name;
-            if(nomeLista.includes(nome)   ){
+            if (nomeLista.includes(nome)) {
                 $scope.pessoa = $scope.pessoas[i];
                 break;
             }
@@ -30,10 +31,18 @@ appSelecao.controller("controllerPessoa", function ($scope, $http) {
 
 //Função responsavel por buscar uma pessoas cadastradas 
     $scope.carregarPessoas = function () {
+        var path = window.location.pathname;
 
+        if (path.includes('service')) {
+            $scope.path = 'service';
+            $scope.host ='http://18.210.88.250:8080'
+        } else {
+            $scope.path = '';
+            $scope.host =window.location.host;
+        }
 
         $http({
-            method: 'GET', url: 'http://localhost:8080/pessoas'})
+            method: 'GET', url: $scope.host + '/' + $scope.path + '/pessoas'})
                 .then(function (response) {
 
                     $scope.pessoas = response.data;
@@ -45,10 +54,11 @@ appSelecao.controller("controllerPessoa", function ($scope, $http) {
     }
 //Função responsavel por buscar uma pessoa pelo ID
     $scope.buscarPessoa = function (id) {
-
+        var host = window.location.host;
+        var path = window.location.pathname;
 
         $http({
-            method: 'GET', url: 'http://localhost:8080/pessoa/' + id, data: '',
+            method: 'GET', url: $scope.host + '/' + $scope.path + '/pessoa/' + id, data: '',
             headers: {
                 'Content-Type': 'application/json'
             }})
@@ -72,8 +82,11 @@ appSelecao.controller("controllerPessoa", function ($scope, $http) {
 //Função responsavel por cadastrar ima nova pessoa na lista
     $scope.cadastrarPessoa = function (pessoa) {
 
+        var host = window.location.host;
+        var path = window.location.pathname;
+
         $http({
-            method: 'POST', url: 'http://localhost:8080/pessoa/save', data: pessoa})
+            method: 'POST', url: $scope.host + '/' + $scope.path + '/pessoa/save', data: pessoa})
                 .then(function (response) {
 
                     $scope.pessoas.push(response.data)
@@ -93,8 +106,17 @@ appSelecao.controller("controllerPessoa", function ($scope, $http) {
 //Funçao responsavel por remover pessoa da lista
     $scope.excliurPessoa = function (pessoa) {
 
+
+        var host = window.location.host;
+        var path = window.location.pathname;
+
+        if (path.includes('service')) {
+            path = 'service';
+        } else {
+            path = '';
+        }
         $http({
-            method: 'DELETE', url: 'http://localhost:8080/pessoa/remove/' + pessoa.id, data: '',
+            method: 'DELETE', url: $scope.host + '/' + $scope.path + '/pessoa/remove/' + pessoa.id, data: '',
             headers: {
                 'Content-Type': 'application/json'
             }})
