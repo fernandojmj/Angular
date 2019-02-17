@@ -60,7 +60,7 @@ public class ControllerPessoa {
      * @return status
      */
     @RequestMapping(method = RequestMethod.DELETE, value = "/pessoa/remove/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Pessoa> buscarPessoas(@PathVariable int id) {
+    public ResponseEntity<Pessoa> removerPessoa(@PathVariable int id) {
         service.remove(id);
         return new ResponseEntity<Pessoa>(HttpStatus.OK);
     }
